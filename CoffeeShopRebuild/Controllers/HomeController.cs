@@ -35,5 +35,14 @@ namespace CoffeeShopRebuild.Controllers
             }
             return View();
         }
+        public ActionResult ItemView()
+        {
+            CoffeeEntities db = new CoffeeEntities();
+            List<Item> items = db.Items.ToList();
+            ViewBag.Items = items;
+
+            return View();
+        }
+        
     }
 }

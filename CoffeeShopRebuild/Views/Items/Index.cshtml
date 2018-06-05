@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
+            <a href="~/Items/ItemsSorted?column=Name">@Html.DisplayNameFor(model => model.Name)</a>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+            <a href="~/Items/ItemsSorted?column=Description"> @Html.DisplayNameFor(model => model.Description)</a>
+</th>
         <th>
             @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            <a href="~/Items/ItemsSorted?column=Price"> @Html.DisplayNameFor(model => model.Price)</a>
         </th>
         <th></th>
     </tr>
@@ -41,10 +41,13 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }, new { @class = "btn btn-primary" }) |
+        <td>
+            @Html.ActionLink("Add", "Add", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-primary" }) |
             @*@Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
-            <button onclick="return ConfirmDelete()">@Html.ActionLink("Delete", "DeleteConfirmed", new { id = item.ID }, new { @class = "btn btn-primary" }) </button>
+            <button onclick="return ConfirmDelete()">@Html.ActionLink("Delete", "Delete", new { id = item.ID }, 
+                                                    new { @class = "btn btn-primary" }) </button>
         </td>
     </tr>
 }

@@ -111,6 +111,32 @@ namespace CoffeeShopRebuild.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Add(int id)
+        {
+            CoffeeEntities db = new CoffeeEntities();
+
+            if (Session["Cart"] == null)
+            {
+                //if it doesnt,make a new list, add the book, then add list to the session
+                List<Item> cart = new List<Item>();
+                cart.Add((from i in db.Items
+                          where i.ID == id
+                          select i).Single());
+                Session.Add("Cart", cart);
+
+            }
+            else
+            {
+                //if it does exist, get the list and add book to it, and may add back to session.
+                List<Item> cart = (List<Item>)(Session["Cart"]);
+                cart.Add((from i in db.Items
+                          where i.ID == id
+                          select i).Single());
+
+            }
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
